@@ -1,0 +1,20 @@
+# lux.ld
+OUTPUT_FORMAT(elf32-i386)
+
+MEMORY{
+    bootloader (rxai) : ORIGIN = 0x7c00, LENGTH = 0x1b8
+    ptable (rai) : ORIGIN = 0x7dbe, LENGTH = 0x40
+    sign (rai) : ORIGIN = 0x7dfe, LENGTH = 0x02
+}
+
+SECTIONS {
+    bootloader : {
+        *(.bootloader)
+    } > bootloader
+    ptable : {
+        *(.ptable)
+    } > ptable
+    sign : {
+        *(.sign)
+    } > sign
+}
